@@ -1,11 +1,11 @@
 import React from 'react'
-import AllCategory from './AllCategory'
+/* import AllCategory from './AllCategory' */
 import Header from './Header'
 import Footer from './Footer'
 import CreateAds from './CreateAds'
-import Home from './Home'
+/* import Home from './Home'
 import MarketCar from './MarketCar'
-import Products from './Products'
+import Products from './Products' */
 
 export class AppContainer extends React.Component {
 	constructor(props) {
@@ -15,11 +15,11 @@ export class AppContainer extends React.Component {
 	render() {
 		return <div>
 			<Header></Header>
-			<AllCategory></AllCategory>
+{/* 			<AllCategory></AllCategory> */}
 			<CreateAds></CreateAds>
-			<Home></Home>
+{/* 			<Home></Home>
 			<MarketCar></MarketCar>
-			<Products></Products>
+			<Products></Products> */}
 			<Footer></Footer>
 		</div>
 	}
