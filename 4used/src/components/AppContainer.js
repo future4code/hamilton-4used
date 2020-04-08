@@ -6,16 +6,30 @@ import CreateAds from './CreateAds'
 import Home from './Home'
 import MarketCar from './MarketCar'
 import Products from './Products'
+import axios from "axios";
 
 export class AppContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state={
-			screen: "home"
+			screen: "home",
+			arrayProducts: []
 		}
 	}
 	setScreen=(value)=>{
 		this.setState({screen: value})
+	}
+
+	getProductsApi = () => {
+		axios
+            .get(
+                "https://us-central1-future-apis.cloudfunctions.net/fourUsed/products"
+            ).then(response => {
+                this.setState({arrayProducts: response.data.products})
+            }).catch(err => {
+                console.log(err.message)
+			})
+
 	}
 
 
@@ -28,10 +42,14 @@ export class AppContainer extends React.Component {
 			case "createads":
 				return <CreateAds setScreen={this.setScreen}/>
 			case "products":
-				return <Products setScreen={this.setScreen}/>
+				return <Products arrayProducts={this.state.arrayProducts} setScreen={this.setScreen}/>
 			default:
 				return <div>fail</div>
 		}
+	}
+
+	componentDidMount() {
+		this.getProductsApi()
 	}
 
 

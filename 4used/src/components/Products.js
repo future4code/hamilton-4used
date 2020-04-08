@@ -43,7 +43,7 @@ display:inline;
 margin-left:1em;
 
 `
-const Img = styled.div `
+const Img = styled.div`
 `
 const ItemImage = styled.img`
 width: 150px;
@@ -52,7 +52,7 @@ justify-content:space-around;
 
 `
 
-const Box =styled.div `
+const Box = styled.div`
 border:1px  solid #434347;
 box-shadow: 2px 2px 2px #434347 ;
 
@@ -69,20 +69,43 @@ color: #444;
 
 `
 
-const DivButton = styled.div `
+const DivButton = styled.div`
 margin:2vh;
 
 
 `
-const DivDescricao = styled.div `
+const DivDescricao = styled.div`
 display:flex;
 
 `
 
 
+
 export default class Products extends React.Component {
 	constructor(props) {
 		super(props)
+	}
+
+	renderProducts = () => {
+		const allProducts = this.props.arrayProducts.map(product => {
+			return <Box>
+				<CardContent>
+					<Title>{product.name} </Title>
+					<DivDescricao>
+						<ItemImage src={product.photos} alt={"Gabi é nota10!"} />
+						<p>Descrição: {product.description}
+						</p>
+						<p> Preço: {product.price}
+						</p>
+					</DivDescricao>
+					<DivButton>
+						<Button size="medium" color="secondary" variant="contained"> Comprar</Button>
+					</DivButton>
+				</CardContent>
+			</Box>
+		})
+
+		return allProducts
 	}
 
 	render() {
@@ -94,35 +117,7 @@ export default class Products extends React.Component {
 				<PageTitle>CATEGORIA</PageTitle>
 
 				<ContainerGrid>
-
-					<Box>
-						<CardContent>
-
-							<Title>Item </Title>
-							
-							
-
-							<DivDescricao>
-							<ItemImage src={"https://suprinform.vteximg.com.br/arquivos/ids/172275-1000-1000/022004156--1-.jpg?v=636885167303500000"} alt={"Gabi é nota10!"}/>
-							<p>Descrição:
-								lorem Ipsum.
-							</p>
-							<p>Descrição
-								Lorem ispum
-							</p>
-							</DivDescricao>
-							
-								<DivButton>
-							<Button size="medium" color="secondary" variant="contained"> Comprar</Button>
-								</DivButton>
-
-							
-
-						</CardContent>
-
-					</Box>
-					
-
+					{this.renderProducts()}
 				</ContainerGrid>
 			</PageContainer>
 
