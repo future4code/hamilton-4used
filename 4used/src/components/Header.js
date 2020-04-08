@@ -18,9 +18,13 @@ class Header extends React.Component {
 		super(props)
 	}
 
+	changeScreen=()=>{
+		this.props.setScreen("home")
+	}
+
 	render() {
 		return <HeaderContainer>
-				<LogoImage src={logo}></LogoImage>
+				<LogoImage src={logo} onClick={this.changeScreen}></LogoImage>
 		</HeaderContainer>
 	}
 }

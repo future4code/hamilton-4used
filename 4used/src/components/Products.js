@@ -103,7 +103,7 @@ export default class Products extends React.Component {
 							
 
 							<DivDescricao>
-							<ItemImage src={require("../img/fones.jpg")} />
+							<ItemImage src={"https://suprinform.vteximg.com.br/arquivos/ids/172275-1000-1000/022004156--1-.jpg?v=636885167303500000"} alt={"Gabi é nota10!"}/>
 							<p>Descrição:
 								lorem Ipsum.
 							</p>

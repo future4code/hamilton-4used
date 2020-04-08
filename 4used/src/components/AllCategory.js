@@ -7,6 +7,9 @@ const ContainerAllCategory = styled.div`
 const DivFilters = styled.div`
 `
 
+const Category = styled.div``
+
+
 const DivCard1 = styled.div`
 	height:200px;
 	width:400px;
@@ -106,6 +109,12 @@ export default class AllCategory extends React.Component {
 		super(props)
 	}
 
+
+	changeScreen=()=>{
+		this.props.setScreen("products")
+	}
+
+
 	render() {
 		return (
 		<ContainerAllCategory>
@@ -117,35 +126,38 @@ export default class AllCategory extends React.Component {
 					<option>Z - A</option>
 				</select>
 			</DivFilters>
+			
+			<Category onClick={this.changeScreen}>
+				<TitleCard>
+					<h2>JÁ QUE ESTAMOS EM CASA</h2>
+					<p>vamos deixar tudo bem lindo</p>
+				</TitleCard>
+				<DivCard1>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard1>
+			</Category>
 
-			<TitleCard>
-				<h2>JÁ QUE ESTAMOS EM CASA</h2>
-				<p>vamos deixar tudo bem lindo</p>
-			</TitleCard>
-			<DivCard1>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-			</DivCard1>
-
-			<TitleCard>
-				<h2>JÁ QUE ESTAMOS EM CASA</h2>
-				<p>vamos deixar tudo bem lindo</p>
-			</TitleCard>
-			<DivCard2>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-				<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
-			</DivCard2>
+			<Category>
+				<TitleCard>
+					<h2>JÁ QUE ESTAMOS EM CASA</h2>
+					<p>vamos deixar tudo bem lindo</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
 
 			<DivMarkCar>
-				
 				{this.props.children}
 			</DivMarkCar>
 		</ContainerAllCategory>
