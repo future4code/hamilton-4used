@@ -10,17 +10,38 @@ import Products from './Products'
 export class AppContainer extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state={
+			screen: "home"
+		}
+	}
+	setScreen=(value)=>{
+		this.setState({screen: value})
 	}
 
+
+	currentScreen=()=>{
+		switch(this.state.screen){
+			case "home":
+				return <Home setScreen={this.setScreen}/>
+			case "allcategory":
+				return <AllCategory setScreen={this.setScreen}/>
+			case "createads":
+				return <CreateAds setScreen={this.setScreen}/>
+			case "products":
+				return <Products setScreen={this.setScreen}/>
+			default:
+				return <div>fail</div>
+		}
+	}
+
+
 	render() {
-		return <div>
-			<Header></Header>
-			<AllCategory></AllCategory>
-			<CreateAds></CreateAds>
-			<Home></Home>
-			<MarketCar></MarketCar>
-			<Products></Products>
-			<Footer></Footer>
-		</div>
+		return (
+			<div>
+				<Header></Header>
+					{this.currentScreen()}
+				<Footer></Footer>
+			</div>
+		)
 	}
 }

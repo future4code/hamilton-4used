@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-
 const CardContent = styled.div`
 display:flex;
 flex-direction:column;
