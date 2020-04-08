@@ -20,15 +20,17 @@ const ContainerMain = styled.div`
 	justify-content: center;
 	margin-left: 20%;
 	padding-bottom: 100px;
-
 `
 
 const ContainerForm = styled.div`
 	align-self: center;
 	margin: 15px 0;
 	width: 50%;
+	margin-right: 90px;
 `
 const DataContainer = styled.div` 
+	display: flex;
+	flex-direction: column;
 	margin-top: 15px;
 	margin-bottom: ${
 	props => props.bottom
@@ -36,7 +38,7 @@ const DataContainer = styled.div`
 `
 
 const ImageCreateAds = styled.img` 
-	width:50%;
+	width: 40%;
 	margin-right: 15%;
 	object-fit: cover;
 `
@@ -48,23 +50,23 @@ class CreateAds extends React.Component {
 
 	render() {
 		return <ContainerCreateAds>
-			<h1>Desapegando</h1>
+			<h1>Crie seu anúncio </h1>
 			<ContainerMain>
 				<ContainerForm>
 					<DataContainer>
-						<label>Nome: </label>
+						<label>O que você quer vender?  </label>
 						<input
-							placeholder="Nome"
+							placeholder="Título do item"
 						></input>
 					</DataContainer>
 					<DataContainer>
-						<label>Descrição: </label>
+						<label>Descrição caprichada do produto: </label>
 						<input
-							placeholder="Descrição"
+							placeholder="Decrição"
 						></input>
 					</DataContainer>
 					<DataContainer>
-						<label>Valor:  R$  </label>
+						<label>Qual o preço do seu produto? </label>
 						<input
 							placeholder="R$"
 							type="number"
@@ -81,21 +83,21 @@ class CreateAds extends React.Component {
 						</select>
 					</DataContainer>
 					<DataContainer>
-						<label>Forma de pagamento: </label>
+						<label>Escolha a opção de pagamento: </label>
 						<select>
 							<option>Boleto bancário</option>
 							<option>Cartão de Crédito</option>
 						</select>
 					</DataContainer>
 					<DataContainer>
-						<label>Categoria: </label>
+						<label>Qual a categoria do seu desapego? </label>
 						<select>
 							<option></option>
 							<option></option>
 						</select>
 					</DataContainer>
 					<DataContainer bottom={'50px'}>
-						<label>Foto do produto: </label>
+						<label>A foto faz TODA diferença! Adiciona ela: </label>
 						<input
 							type="file"
 						>
