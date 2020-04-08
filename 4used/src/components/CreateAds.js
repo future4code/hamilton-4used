@@ -31,7 +31,7 @@ const ContainerForm = styled.div`
 const DataContainer = styled.div` 
 	display: flex;
 	flex-direction: column;
-	margin-top: 15px;
+	margin-top: 20px;
 	margin-bottom: ${
 	props => props.bottom
 	};
@@ -43,12 +43,91 @@ const ImageCreateAds = styled.img`
 	object-fit: cover;
 `
 
+
+
 class CreateAds extends React.Component {
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			nameProduct: "",
+			descriptionProduct: "",
+			priceProduct: -Infinity,
+			paymentMetProduct: "",
+			categoryProduct: "",
+			photosProduct: [],
+			installmentsProduct: undefined
+		}
 	}
 
+
+	//All onChanges
+
+	onChangeInputName = (event) => {
+		this.setState({nameProduct: event.target.value})
+	}
+	
+	onChangeInputDescription = (event) => {
+		this.setState({descriptionProduct: event.target.value})
+	}
+
+	onChangeInputPrice = (event) => {
+		this.setState({priceProduct: Number(event.target.value)})
+	}
+	
+	onChangeInputPayMethod = (event) => {
+		this.setState({paymentMetProduct: event.target.value})
+	}
+
+	onChangeInputCategory = (event) => {
+		this.setState({categoryProduct: event.target.value})
+	}
+
+	onChangeInputPhoto = (event) => {
+		this.setState({photosProduct: [event.target.value]})
+	}
+
+	onChangeInputInstallments = (event) => {
+		this.setState({installmentsProduct: Number(event.target.value)})
+	}
+
+	//API Create Product
+
+	createProduct = () => {
+		const body = {
+			name: this.state.nameProduct,
+			description: this.state.descriptionProduct,
+			price: this.state.priceProduct,
+			paymentMethod: this.state.paymentMetProduct,
+			category: this.state.categoryProduct,
+			photos: this.state.photosProduct,
+			installments: this.state.installmentsProduct
+		}
+
+
+		axios
+            .post(
+                "https://us-central1-future-apis.cloudfunctions.net/fourUsed/products",
+                body
+            ).then(response => {
+                console.log("Procuct created")
+            }).catch(err => {
+                console.log(err.message)
+            })
+
+        this.setState({ 
+			nameProduct: "",
+			descriptionProduct: "",
+			priceProduct: -Infinity,
+			paymentMetProduct: "",
+			categoryProduct: "",
+			photosProduct: [],
+			installmentsProduct: 0})
+	}
+
+
 	render() {
+		console.log(this.state.installmentsProduct)
 		return <ContainerCreateAds>
 			<h1>Crie seu anúncio </h1>
 			<ContainerMain>
@@ -56,54 +135,71 @@ class CreateAds extends React.Component {
 					<DataContainer>
 						<label>O que você quer vender?  </label>
 						<input
+							onChange={this.onChangeInputName}
+							value={this.state.nameProduct}
 							placeholder="Título do item"
 						></input>
 					</DataContainer>
 					<DataContainer>
 						<label>Descrição caprichada do produto: </label>
 						<input
+							onChange={this.onChangeInputDescription}
+							value={this.state.descriptionProduct}
 							placeholder="Decrição"
 						></input>
 					</DataContainer>
 					<DataContainer>
+						<label>Qual a categoria do seu desapego? </label>
+						<select
+							onChange={this.onChangeInputCategory}
+							value={this.state.categoryProduct}
+						>
+							<option value="teste">Teste</option>
+							<option value=""></option>
+						</select>
+					</DataContainer>
+					<DataContainer>
 						<label>Qual o preço do seu produto? </label>
 						<input
+							onChange={this.onChangeInputPrice}
+							value={this.state.priceProduct}
 							placeholder="R$"
 							type="number"
 							min="0"
 						></input>
 					</DataContainer>
 					<DataContainer>
-						<label>Quantidade de parcelas: </label>
-						<select>
-							<option>x 1</option>
-							<option>x 2</option>
-							<option>x 5</option>
-							<option>x 10</option>
-						</select>
-					</DataContainer>
-					<DataContainer>
 						<label>Escolha a opção de pagamento: </label>
-						<select>
-							<option>Boleto bancário</option>
-							<option>Cartão de Crédito</option>
+						<select
+							onChange={this.onChangeInputPayMethod}
+							value={this.state.paymentMetProduct}
+						>
+							<option value="debit">Boleto bancário</option>
+							<option value="card">Cartão de Crédito</option>
 						</select>
 					</DataContainer>
 					<DataContainer>
-						<label>Qual a categoria do seu desapego? </label>
-						<select>
-							<option></option>
-							<option></option>
+						<label>Quantidade de parcelas: </label>
+						<select
+							onChange={this.onChangeInputInstallments}
+							value={this.state.installmentsProduct}
+						>
+							<option value="1">x 1</option>
+							<option value="2">x 2</option>
+							<option value="5">x 5</option>
+							<option value="10">x 10</option>
 						</select>
 					</DataContainer>
 					<DataContainer bottom={'50px'}>
 						<label>A foto faz TODA diferença! Adiciona ela: </label>
 						<input
-							type="file"
+							onChange={this.onChangeInputPhoto}
+							value={this.state.photosProduct}
+							placeholder="Coloque a URL da imagem"
 						>
 						</input>
 					</DataContainer>
-					<Button size="medium" color="secondary" variant="contained">Criar anúncio</Button>
+					<Button size="medium" color="secondary" variant="contained" onClick={this.createProduct}>Criar anúncio</Button>
 				</ContainerForm>
 				<ImageCreateAds src={AdImage}></ImageCreateAds>
 			</ContainerMain>
