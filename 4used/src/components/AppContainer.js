@@ -3,7 +3,7 @@ import AllCategory from './AllCategory'
 import Header from './Header'
 import Footer from './Footer'
 import CreateAds from './CreateAds'
-import Home from './Home'
+// import Home from './Home'
 import MarketCar from './MarketCar'
 import Products from './Products'
 
