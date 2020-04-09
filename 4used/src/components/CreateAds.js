@@ -4,6 +4,7 @@ import axios from "axios";
 import AdImage from "../img/anuncio.png"
 import Button from '@material-ui/core/Button';
 
+import AdImage2 from "../img/comprar.png"
 
 const ContainerCreateAds = styled.div`
 	display: flex;
@@ -55,40 +56,56 @@ class CreateAds extends React.Component {
 			priceProduct: -Infinity,
 			paymentMetProduct: "",
 			categoryProduct: "",
-			photosProduct: [],
+			photosProduct: [""],
 			installmentsProduct: undefined
 		}
 	}
+
+	changePhoto = () => {
+				const arrayString = JSON.stringify(this.state.photosProduct)
+				if (arrayString === '[""]') {
+					return <ImageCreateAds src={AdImage}></ImageCreateAds>
+				} else {
+					if (arrayString.includes("jpg") ||
+					arrayString.includes("png") ||
+					arrayString.includes("jpeg")
+					) {
+						return <ImageCreateAds src={this.state.photosProduct}></ImageCreateAds>
+					} else {
+						return <ImageCreateAds src={AdImage}></ImageCreateAds>
+					}
+				}
+			}
 
 
 	//All onChanges
 
 	onChangeInputName = (event) => {
-		this.setState({nameProduct: event.target.value})
+		this.setState({ nameProduct: event.target.value })
 	}
-	
+
 	onChangeInputDescription = (event) => {
-		this.setState({descriptionProduct: event.target.value})
+		this.setState({ descriptionProduct: event.target.value })
 	}
 
 	onChangeInputPrice = (event) => {
-		this.setState({priceProduct: Number(event.target.value)})
+		this.setState({ priceProduct: Number(event.target.value) })
 	}
-	
+
 	onChangeInputPayMethod = (event) => {
-		this.setState({paymentMetProduct: event.target.value})
+		this.setState({ paymentMetProduct: event.target.value })
 	}
 
 	onChangeInputCategory = (event) => {
-		this.setState({categoryProduct: event.target.value})
+		this.setState({ categoryProduct: event.target.value })
 	}
 
 	onChangeInputPhoto = (event) => {
-		this.setState({photosProduct: [event.target.value]})
+		this.setState({ photosProduct: [event.target.value] })
 	}
 
 	onChangeInputInstallments = (event) => {
-		this.setState({installmentsProduct: Number(event.target.value)})
+		this.setState({ installmentsProduct: Number(event.target.value) })
 	}
 
 	//API Create Product
@@ -106,28 +123,30 @@ class CreateAds extends React.Component {
 
 
 		axios
-            .post(
-                "https://us-central1-future-apis.cloudfunctions.net/fourUsed/products",
-                body
-            ).then(response => {
-                console.log("Procuct created")
-            }).catch(err => {
-                console.log(err.message)
-            })
+			.post(
+				"https://us-central1-future-apis.cloudfunctions.net/fourUsed/products",
+				body
+			).then(response => {
+				console.log("Procuct created")
+			}).catch(err => {
+				console.log(err.message)
+			})
 
-        this.setState({ 
+		this.setState({
 			nameProduct: "",
 			descriptionProduct: "",
 			priceProduct: -Infinity,
 			paymentMetProduct: "",
 			categoryProduct: "",
-			photosProduct: [],
-			installmentsProduct: 0})
+			photosProduct: "",
+			installmentsProduct: 0
+		})
 	}
 
 
+
 	render() {
-		console.log(this.state.installmentsProduct)
+
 		return <ContainerCreateAds>
 			<h1>Crie seu anúncio </h1>
 			<ContainerMain>
@@ -139,6 +158,15 @@ class CreateAds extends React.Component {
 							value={this.state.nameProduct}
 							placeholder="Título do item"
 						></input>
+					</DataContainer>
+					<DataContainer>
+						<label>A foto faz TODA diferença! Adiciona ela: </label>
+						<input
+							onChange={this.onChangeInputPhoto}
+							value={this.state.photosProduct}
+							placeholder="Coloque a URL da imagem"
+						>
+						</input>
 					</DataContainer>
 					<DataContainer>
 						<label>Descrição caprichada do produto: </label>
@@ -178,7 +206,7 @@ class CreateAds extends React.Component {
 							<option value="card">Cartão de Crédito</option>
 						</select>
 					</DataContainer>
-					<DataContainer>
+					<DataContainer bottom={'50px'}>
 						<label>Quantidade de parcelas: </label>
 						<select
 							onChange={this.onChangeInputInstallments}
@@ -190,18 +218,9 @@ class CreateAds extends React.Component {
 							<option value="10">x 10</option>
 						</select>
 					</DataContainer>
-					<DataContainer bottom={'50px'}>
-						<label>A foto faz TODA diferença! Adiciona ela: </label>
-						<input
-							onChange={this.onChangeInputPhoto}
-							value={this.state.photosProduct}
-							placeholder="Coloque a URL da imagem"
-						>
-						</input>
-					</DataContainer>
 					<Button size="medium" color="secondary" variant="contained" onClick={this.createProduct}>Criar anúncio</Button>
 				</ContainerForm>
-				<ImageCreateAds src={AdImage}></ImageCreateAds>
+				{this.changePhoto()}
 			</ContainerMain>
 		</ContainerCreateAds>
 	}
