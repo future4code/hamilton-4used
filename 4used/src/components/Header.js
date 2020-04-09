@@ -10,7 +10,7 @@ const HeaderContainer = styled.header`
 const LogoImage = styled.img` 
 	height: 80px;
 	align-self: center;	
-	margin-left: 20%;
+	margin-left: 10%;
 `
 
 class Header extends React.Component {

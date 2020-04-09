@@ -4,14 +4,12 @@ import axios from "axios";
 import AdImage from "../img/anuncio.png"
 import Button from '@material-ui/core/Button';
 
-import AdImage2 from "../img/comprar.png"
-
 const ContainerCreateAds = styled.div`
 	display: flex;
 	flex-direction: column;
 	
 	h1:nth-child(1){
-		margin-left: 20%;
+		margin-left: 10%;
 		padding-top: 30px;
 	}
 `
@@ -19,7 +17,7 @@ const ContainerCreateAds = styled.div`
 const ContainerMain = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-left: 20%;
+	margin-left: 10%;
 	padding-bottom: 100px;
 `
 
@@ -40,7 +38,7 @@ const DataContainer = styled.div`
 
 const ImageCreateAds = styled.img` 
 	width: 40%;
-	margin-right: 15%;
+	margin-right: 10%;
 	object-fit: cover;
 `
 
