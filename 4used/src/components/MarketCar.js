@@ -25,15 +25,49 @@ const Container = styled.div`
   transition: 0.5s;
 `;
 
+const DivProductMarketCar = styled.div`
+	img{
+		height:40px;
+	}
+`
+
 export default class MarketCar extends React.Component {
+
+
+	renderMarketCarProducts=()=>{
+		const selectedProducts = this.props.arrayCart.map(product=>{
+			return (<DivProductMarketCar>
+						<img src={product.photos}/>
+						<p>{product.name}</p>
+						<p>R${product.price}</p>
+					</DivProductMarketCar>)
+		})
+		return selectedProducts;
+	}
+
+	totalPrice=()=>{
+		let total = 0;
+		const sumTotal = this.props.arrayCart.forEach(product => {
+			return total = total + product.price
+		});
+		
+		return(<div>
+				<h4>Total</h4>
+				<p>R$ {total}</p> 
+				</div>)
+	}
+
+
+
   render() {
     return (
       <>
         <Container isCartOpen={this.props.isCartOpen}>
-          {this.props.arrayCart.map((product) => (
-            <p>{product.name}</p>
-          ))}
+			<h2>Carrinho</h2>
+			{this.renderMarketCarProducts()}
+			{this.totalPrice()}
         </Container>
+
         <Overlay
           onClick={this.props.toggleCart}
           isCartOpen={this.props.isCartOpen}

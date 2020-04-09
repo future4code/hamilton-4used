@@ -19,8 +19,10 @@ export class AppContainer extends React.Component {
 			arrayProductsSearch:[],
 			arrayCart: [],
 			isCartOpen: false,
+			selectCategory: "",
 		};
 	}
+
 
 	setScreen=(value)=>{
 		this.setState({screen: value})
@@ -28,6 +30,10 @@ export class AppContainer extends React.Component {
 
 	setSearchArray=(value)=>{
 		this.setState({arrayProductsSearch: value})
+	}
+
+	setSelectCategory=(value)=>{
+		this.setState({selectCategory: value});
 	}
 
 	getProductsApi = () => {
@@ -41,6 +47,16 @@ export class AppContainer extends React.Component {
 			})
 	}
 
+	addToCart = (product) => {
+		this.setState({
+			arrayCart: [...this.state.arrayCart, product],
+		});
+	};
+	toggleCart = () => {
+		this.setState({
+			isCartOpen: !this.state.isCartOpen,
+		});
+	};
 
 	currentScreen=()=>{
 		switch(this.state.screen){
@@ -49,15 +65,18 @@ export class AppContainer extends React.Component {
 
 			case "allcategory":
 				return <AllCategory setScreen={this.setScreen}
-									arrayProducts={this.state.arrayProducts}/>
+									arrayProducts={this.state.arrayProducts}
+									setSelectCategory={this.setSelectCategory}/>
 
 			case "createads":
 				return <CreateAds setScreen={this.setScreen}/>
 
 			case "products":
-				return <Products setScreen={this.setScreen} 
-								 arrayProducts={this.state.arrayProducts}/>
-
+				return <Products setScreen={this.setScreen}
+								 arrayProducts={this.state.arrayProducts}
+								 selectCategory={this.state.selectCategory}
+								 addToCart={this.addToCart}/>
+								 
 			case "search":
 				return <Search arrayProductsSearch={this.state.arrayProductsSearch}/>
 
@@ -70,17 +89,6 @@ export class AppContainer extends React.Component {
 		this.getProductsApi()
 	}
 
-	addToCart = (product) => {
-		this.setState({
-			arrayCart: [...this.state.arrayCart, product],
-		});
-	};
-	toggleCart = () => {
-		this.setState({
-			isCartOpen: !this.state.isCartOpen,
-		});
-	};
-
 	render() {
 		return (
 			<div>
@@ -90,6 +98,7 @@ export class AppContainer extends React.Component {
 					arrayCart={this.state.arrayCart}
 					toggleCart={this.toggleCart}
 					isCartOpen={this.state.isCartOpen}
+
 				/>
 
 				<Header setScreen={this.setScreen} 
@@ -98,7 +107,7 @@ export class AppContainer extends React.Component {
 				/>
 
 				{this.currentScreen()}
-				
+
 				<Footer/>
 			</div>
 		)

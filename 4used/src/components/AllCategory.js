@@ -4,8 +4,6 @@ import styled from 'styled-components';
 const ContainerAllCategory = styled.div`
 
 `
-const DivFilters = styled.div`
-`
 
 const Category = styled.div``
 
@@ -96,9 +94,6 @@ const DivCard2 = styled.div`
 	}
 `
 
-const DivMarkCar = styled.div`
-`
-
 
 
 
@@ -108,8 +103,9 @@ export default class AllCategory extends React.Component {
 	}
 
 
-	changeScreen=()=>{
-		this.props.setScreen("products")
+	changeScreen=(category)=>{
+		this.props.setSelectCategory(category);
+		this.props.setScreen("products");
 	}
 
 	renderCategories = (type, title, subtitle, style) => {
@@ -137,7 +133,7 @@ export default class AllCategory extends React.Component {
 			}
 		}
 
-        return (<Category>
+        return (<Category onClick={()=>this.changeScreen(type)}>
                 	<TitleCard>
                 		<h2>{title}</h2>
                 		<p>{subtitle}</p>
@@ -153,13 +149,6 @@ export default class AllCategory extends React.Component {
 	render() {
 		return (
 		<ContainerAllCategory>
-			<DivFilters>
-				<select>
-					<option>Ordenação</option>
-					<option>A - Z</option>
-					<option>Z - A</option>
-				</select>
-			</DivFilters>
 
 			{this.renderCategories("games", "Gamers e quarenteners", "jogos para matar o tédio", 1)}
 			{this.renderCategories("Jogos de tabuleiro", "Jogos de tabuleiro", "colocando as cartas na mesa", 2)}

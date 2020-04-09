@@ -114,8 +114,15 @@ export default class Products extends React.Component {
 
 
 //tem que melhorar, para não ficar em cascata!
-	filterPrice=()=>{
-		const arrayFilter = this.props.arrayProducts.filter(product=>{
+	intCascate=()=>{
+		const filterCategory = this.props.arrayProducts.filter(product=>{
+			return (product.category === this.props.selectCategory)
+		})
+		return this.filterPrice(filterCategory);
+	}
+
+	filterPrice=(filterCategory)=>{
+		const arrayFilter = filterCategory.filter(product=>{
 			return ((product.price>=this.state.inputMin) && (product.price<=this.state.inputMax))
 		})
 		return this.filterOrdenation(arrayFilter);
@@ -150,7 +157,8 @@ export default class Products extends React.Component {
 							</p>
 						</DivDescricao>
 						<DivButton>
-							<Button size="medium" color="secondary" variant="contained"> Comprar</Button>
+							<Button size="medium" color="secondary" variant="contained" 
+									onClick={()=>this.props.addToCart(product)}> Comprar</Button>
 						</DivButton>
 					</CardContent>
 				</Box>)
@@ -159,7 +167,7 @@ export default class Products extends React.Component {
 	}
 
 	changeScreen=()=>{
-		this.props.setScreen("allcategory")
+		this.props.setScreen("allcategory");
 	}
 
 	render() {
@@ -179,14 +187,12 @@ export default class Products extends React.Component {
 
 			<PageTitle>Products</PageTitle>
 
-
-
+				<button onClick={this.changeScreen}>voltar para as categorias</button>
 
 				<ContainerGrid>
-					{this.filterPrice()}
+					{this.intCascate()}
 				</ContainerGrid>
-				{/* checar se o botao esta funcionando */}
-				<button onClick={this.changeScreen}>voltar para as categorias</button>
+				
 			</PageContainer>
 
 		)
