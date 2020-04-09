@@ -45,7 +45,8 @@ export class AppContainer extends React.Component {
 				return <Home setScreen={this.setScreen}/>
 
 			case "allcategory":
-				return <AllCategory setScreen={this.setScreen}/>
+				return <AllCategory setScreen={this.setScreen}
+									arrayProducts={this.state.arrayProducts}/>
 
 			case "createads":
 				return <CreateAds setScreen={this.setScreen}/>
