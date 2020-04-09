@@ -114,6 +114,29 @@ export default class AllCategory extends React.Component {
 		this.props.setScreen("products")
 	}
 
+	renderCategories = (CATEGORIA) => {
+        const games = this.props.arrayProducts.filter(category => {
+            return (category.category === CATEGORIA)
+        })
+        let arrayImagens = [];
+        for(let i=0;i<=5;i++){
+            arrayImagens.push(games[i].photos)
+        }
+        console.log(arrayImagens);
+        const teste = arrayImagens.map(element=>{
+             return(<div><ImgCard src={element}/></div>)
+            })
+        return (<Category>
+                <TitleCard>
+                <h2>ATRIBUTO TITULO</h2>
+                <p>ATRIBUTO SUBTITULO</p>
+                </TitleCard>
+                <DivCard2>
+                    {teste}
+               </DivCard2>
+             </Category> )
+    }
+
 
 	render() {
 		return (
@@ -125,11 +148,11 @@ export default class AllCategory extends React.Component {
 					<option>Z - A</option>
 				</select>
 			</DivFilters>
-			
+			{this.renderCategories("games")}
 			<Category onClick={this.changeScreen}>
 				<TitleCard>
-					<h2>JÁ QUE ESTAMOS EM CASA</h2>
-					<p>vamos deixar tudo bem lindo</p>
+					<h2>Gamers e quarenteners</h2>
+					<p>jogos para matar o tédio</p>
 				</TitleCard>
 				<DivCard1>
 					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
@@ -143,8 +166,106 @@ export default class AllCategory extends React.Component {
 
 			<Category>
 				<TitleCard>
-					<h2>JÁ QUE ESTAMOS EM CASA</h2>
-					<p>vamos deixar tudo bem lindo</p>
+					<h2>Jogos de tabuleiro</h2>
+					<p>colocando as cartas na mesa</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Headphones</h2>
+					<p>para todas as vídeo-chamadas </p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Livros para sua quarentena</h2>
+					<p>viajando dentro de casa</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Já que estamos em casa</h2>
+					<p>por que não deixar seu cantinho mais lindo?</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Brinquedos para seu pet</h2>
+					<p>ele merece se divertir</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Itens para fazer artesanato</h2>
+					<p>de vida para suas ideias</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Brinquedos</h2>
+					<p>para distrair seu filho na quarentena</p>
+				</TitleCard>
+				<DivCard2>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
+				</DivCard2>
+			</Category>
+			<Category>
+				<TitleCard>
+					<h2>Para treinar sem sair de casa</h2>
+					<p>a maromba não pode parar</p>
 				</TitleCard>
 				<DivCard2>
 					<div><ImgCard src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png"}/></div>
