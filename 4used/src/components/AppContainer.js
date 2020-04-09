@@ -8,6 +8,7 @@ import Home from './Home'
 import MarketCar from './MarketCar'
 import Products from './Products'
 import Search from './Search'
+import {Button} from '@material-ui/core'
 
 export class AppContainer extends React.Component {
 	constructor(props) {
@@ -15,9 +16,13 @@ export class AppContainer extends React.Component {
 		this.state={
 			screen: "home",
 			arrayProducts: [],
-			arrayProductsSearch:[]
-		}
+			arrayProductsSearch:[],
+			arrayCart: [],
+			isCartOpen: false,
+			selectCategory: "",
+		};
 	}
+
 
 	setScreen=(value)=>{
 		this.setState({screen: value})
@@ -25,6 +30,10 @@ export class AppContainer extends React.Component {
 
 	setSearchArray=(value)=>{
 		this.setState({arrayProductsSearch: value})
+	}
+
+	setSelectCategory=(value)=>{
+		this.setState({selectCategory: value});
 	}
 
 	getProductsApi = () => {
@@ -38,6 +47,16 @@ export class AppContainer extends React.Component {
 			})
 	}
 
+	addToCart = (product) => {
+		this.setState({
+			arrayCart: [...this.state.arrayCart, product],
+		});
+	};
+	toggleCart = () => {
+		this.setState({
+			isCartOpen: !this.state.isCartOpen,
+		});
+	};
 
 	currentScreen=()=>{
 		switch(this.state.screen){
@@ -46,15 +65,18 @@ export class AppContainer extends React.Component {
 
 			case "allcategory":
 				return <AllCategory setScreen={this.setScreen}
-									arrayProducts={this.state.arrayProducts}/>
+									arrayProducts={this.state.arrayProducts}
+									setSelectCategory={this.setSelectCategory}/>
 
 			case "createads":
 				return <CreateAds setScreen={this.setScreen}/>
 
 			case "products":
-				return <Products setScreen={this.setScreen} 
-								 arrayProducts={this.state.arrayProducts}/>
-
+				return <Products setScreen={this.setScreen}
+								 arrayProducts={this.state.arrayProducts}
+								 selectCategory={this.state.selectCategory}
+								 addToCart={this.addToCart}/>
+								 
 			case "search":
 				return <Search arrayProductsSearch={this.state.arrayProductsSearch}/>
 
@@ -67,14 +89,25 @@ export class AppContainer extends React.Component {
 		this.getProductsApi()
 	}
 
-
 	render() {
 		return (
 			<div>
+
+				<Button onClick={this.toggleCart}>ABRIR LOJA</Button>
+				<MarketCar
+					arrayCart={this.state.arrayCart}
+					toggleCart={this.toggleCart}
+					isCartOpen={this.state.isCartOpen}
+
+				/>
+
 				<Header setScreen={this.setScreen} 
 						arrayProducts={this.state.arrayProducts}
-						setSearchArray={this.setSearchArray}/>
-					{this.currentScreen()}
+						setSearchArray={this.setSearchArray}
+				/>
+
+				{this.currentScreen()}
+
 				<Footer/>
 			</div>
 		)
