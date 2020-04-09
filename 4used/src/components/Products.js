@@ -88,7 +88,6 @@ export default class Products extends React.Component {
 			inputMax: Infinity,
 			inputMin: null,
 			inputSelect:"nenhum",
-			inputSearch:"",
 		}
 	}
 
@@ -108,24 +107,9 @@ export default class Products extends React.Component {
 		}
 	}
 
-	onChangeInputSearch=(event)=>{
-		this.setState({inputSearch: event.target.value});
-	}
+
 	onChangeinputSelect=(event)=>{
 		this.setState({inputSelect: event.target.value})
-	}
-
-
-
-//falta decidirmos o que fazer com a função search, mas ela já retorna a array com os resultados
-	filterSearch=()=>{
-		const arraySearch = this.props.arrayProducts.filter((product)=>{
-			const productlowerCase = product.name.toLowerCase();
-			const searchText = this.state.inputSearch.toLowerCase();
-
-			return (productlowerCase.includes(searchText));
-		})
-			return (console.log(arraySearch));
 	}
 
 
@@ -154,23 +138,28 @@ export default class Products extends React.Component {
 
 	renderProducts = (orderedArray) => {
 		const allProducts = orderedArray.map(product => {
-			return <Box key={product.id}>
-				<CardContent>
-					<Title>{product.name} </Title>
-					<DivDescricao>
-						<ItemImage src={product.photos} alt={"imagem"} />
-						<p>Descrição: {product.description}
-						</p>
-						<p> Preço: {product.price}
-						</p>
-					</DivDescricao>
-					<DivButton>
-						<Button size="medium" color="secondary" variant="contained"> Comprar</Button>
-					</DivButton>
-				</CardContent>
-			</Box>
+			return (
+				<Box key={product.id}>
+					<CardContent>
+						<Title>{product.name} </Title>
+						<DivDescricao>
+							<ItemImage src={product.photos} alt={"imagem"} />
+							<p>Descrição: {product.description}
+							</p>
+							<p> Preço: {product.price}
+							</p>
+						</DivDescricao>
+						<DivButton>
+							<Button size="medium" color="secondary" variant="contained"> Comprar</Button>
+						</DivButton>
+					</CardContent>
+				</Box>)
 		})
-		return allProducts
+		return allProducts;
+	}
+
+	changeScreen=()=>{
+		this.props.setScreen("allcategory")
 	}
 
 	render() {
@@ -187,10 +176,8 @@ export default class Products extends React.Component {
 					<option value="crescente">menor - maior</option>
 					<option value="decrescente">maior - menor</option>
 				</select>
-				<input placeholder="Busca" onChange={this.onChangeInputSearch}/>
-				<button onClick={this.filterSearch}>Buscar</button>
 
-				<PageTitle>Products</PageTitle>
+			<PageTitle>Products</PageTitle>
 
 
 
@@ -198,6 +185,8 @@ export default class Products extends React.Component {
 				<ContainerGrid>
 					{this.filterPrice()}
 				</ContainerGrid>
+				{/* checar se o botao esta funcionando */}
+				<button onClick={this.changeScreen}>voltar para as categorias</button>
 			</PageContainer>
 
 		)

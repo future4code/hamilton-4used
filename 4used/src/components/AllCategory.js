@@ -119,7 +119,6 @@ export default class AllCategory extends React.Component {
 		return (
 		<ContainerAllCategory>
 			<DivFilters>
-				<input placeholder="Busca"/>
 				<select>
 					<option>Ordenação</option>
 					<option>A - Z</option>
