@@ -8,6 +8,7 @@ import Home from './Home'
 import MarketCar from './MarketCar'
 import Products from './Products'
 import Search from './Search'
+import {Button} from '@material-ui/core'
 
 export class AppContainer extends React.Component {
 	constructor(props) {
@@ -15,8 +16,10 @@ export class AppContainer extends React.Component {
 		this.state={
 			screen: "home",
 			arrayProducts: [],
-			arrayProductsSearch:[]
-		}
+			arrayProductsSearch:[],
+			arrayCart: [],
+			isCartOpen: false,
+		};
 	}
 
 	setScreen=(value)=>{
@@ -67,14 +70,35 @@ export class AppContainer extends React.Component {
 		this.getProductsApi()
 	}
 
+	addToCart = (product) => {
+		this.setState({
+			arrayCart: [...this.state.arrayCart, product],
+		});
+	};
+	toggleCart = () => {
+		this.setState({
+			isCartOpen: !this.state.isCartOpen,
+		});
+	};
 
 	render() {
 		return (
 			<div>
+
+				<Button onClick={this.toggleCart}>ABRIR LOJA</Button>
+				<MarketCar
+					arrayCart={this.state.arrayCart}
+					toggleCart={this.toggleCart}
+					isCartOpen={this.state.isCartOpen}
+				/>
+
 				<Header setScreen={this.setScreen} 
 						arrayProducts={this.state.arrayProducts}
-						setSearchArray={this.setSearchArray}/>
-					{this.currentScreen()}
+						setSearchArray={this.setSearchArray}
+				/>
+
+				{this.currentScreen()}
+				
 				<Footer/>
 			</div>
 		)
