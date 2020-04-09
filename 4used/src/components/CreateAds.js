@@ -138,8 +138,8 @@ class CreateAds extends React.Component {
 			priceProduct: -Infinity,
 			paymentMetProduct: "",
 			categoryProduct: "",
-			photosProduct: "",
-			installmentsProduct: 0
+			photosProduct: [""],
+			installmentsProduct: undefined
 		})
 	}
 
