@@ -16,6 +16,26 @@ const LogoImage = styled.img`
 class Header extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state={
+			inputSearch:""
+		}
+	}
+
+	onChangeInputSearch=(event)=>{
+		this.setState({inputSearch: event.target.value});
+	}
+
+	filterSearch=()=>{
+		if(this.state.inputSearch!==""){
+			const arraySearch = this.props.arrayProducts.filter((product)=>{
+				const productlowerCase = product.name.toLowerCase();
+				const searchText = this.state.inputSearch.toLowerCase();
+
+				return (productlowerCase.includes(searchText));
+			})
+				this.props.setSearchArray(arraySearch);
+				this.props.setScreen("search");
+		}
 	}
 
 	changeScreen=()=>{
@@ -23,9 +43,13 @@ class Header extends React.Component {
 	}
 
 	render() {
-		return <HeaderContainer>
+		return (
+			<HeaderContainer>
 				<LogoImage src={logo} onClick={this.changeScreen}></LogoImage>
-		</HeaderContainer>
+				<input placeholder="Busca" onChange={this.onChangeInputSearch}/>
+				<button onClick={this.filterSearch}>Buscar</button>
+			</HeaderContainer>
+		)
 	}
 }
 
