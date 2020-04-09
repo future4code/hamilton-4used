@@ -84,15 +84,81 @@ display:flex;
 export default class Products extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state={
+			inputMax: Infinity,
+			inputMin: null,
+			inputSelect:"nenhum",
+			inputSearch:"",
+		}
 	}
 
-	renderProducts = () => {
-		const allProducts = this.props.arrayProducts.map(product => {
-			return <Box>
+	onChangeInputMax=(event)=>{
+		if(event.target.value===""){
+			this.setState({inputMax: Infinity})
+		}else{
+			this.setState({inputMax: event.target.value});
+		}
+	}
+
+	onChangeInputMin=(event)=>{
+		if(event.target.value==""){
+			this.setState({inputMin: null})
+		}else{
+			this.setState({inputMin: event.target.value});
+		}
+	}
+
+	onChangeInputSearch=(event)=>{
+		this.setState({inputSearch: event.target.value});
+	}
+	onChangeinputSelect=(event)=>{
+		this.setState({inputSelect: event.target.value})
+	}
+
+
+
+//falta decidirmos o que fazer com a função search, mas ela já retorna a array com os resultados
+	filterSearch=()=>{
+		const arraySearch = this.props.arrayProducts.filter((product)=>{
+			const productlowerCase = product.name.toLowerCase();
+			const searchText = this.state.inputSearch.toLowerCase();
+
+			return (productlowerCase.includes(searchText));
+		})
+			return (console.log(arraySearch));
+	}
+
+
+//tem que melhorar, para não ficar em cascata!
+	filterPrice=()=>{
+		const arrayFilter = this.props.arrayProducts.filter(product=>{
+			return ((product.price>=this.state.inputMin) && (product.price<=this.state.inputMax))
+		})
+		return this.filterOrdenation(arrayFilter);
+	}
+
+	filterOrdenation=(arrayFilter)=>{
+		switch (this.state.inputSelect){
+			case "nenhum":
+				return this.renderProducts(arrayFilter);
+
+			case "crescente":
+				const AscendingArray = arrayFilter.sort((a , b)=> a.price - b.price);
+				return this.renderProducts(AscendingArray);
+
+			case "decrescente":
+				const DescendingArray = arrayFilter.sort((b , a)=> a.price - b.price);
+				return this.renderProducts(DescendingArray);
+		}
+	};
+
+	renderProducts = (orderedArray) => {
+		const allProducts = orderedArray.map(product => {
+			return <Box key={product.id}>
 				<CardContent>
 					<Title>{product.name} </Title>
 					<DivDescricao>
-						<ItemImage src={product.photos} alt={"Gabi é nota10!"} />
+						<ItemImage src={product.photos} alt={"imagem"} />
 						<p>Descrição: {product.description}
 						</p>
 						<p> Preço: {product.price}
@@ -104,20 +170,33 @@ export default class Products extends React.Component {
 				</CardContent>
 			</Box>
 		})
-
 		return allProducts
 	}
 
 	render() {
 		return (
-
-
 			<PageContainer>
 
-				<PageTitle>CATEGORIA</PageTitle>
+				<label>Preço máxima</label>
+				<input onChange={this.onChangeInputMax}/>
+				<label>Preço mínimo</label>
+				<input onChange={this.onChangeInputMin}/>
+				<button>Filtrar</button>
+				<select onChange={this.onChangeinputSelect}>
+					<option value="nenhum">Ordenação</option>
+					<option value="crescente">menor - maior</option>
+					<option value="decrescente">maior - menor</option>
+				</select>
+				<input placeholder="Busca" onChange={this.onChangeInputSearch}/>
+				<button onClick={this.filterSearch}>Buscar</button>
+
+				<PageTitle>Products</PageTitle>
+
+
+
 
 				<ContainerGrid>
-					{this.renderProducts()}
+					{this.filterPrice()}
 				</ContainerGrid>
 			</PageContainer>
 

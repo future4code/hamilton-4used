@@ -12,7 +12,7 @@ export class AppContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state={
-			screen: "home",
+			screen: "products",
 			arrayProducts: []
 		}
 	}
@@ -29,7 +29,6 @@ export class AppContainer extends React.Component {
             }).catch(err => {
                 console.log(err.message)
 			})
-
 	}
 
 
