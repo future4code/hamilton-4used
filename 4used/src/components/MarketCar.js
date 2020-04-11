@@ -21,7 +21,7 @@ const ContainerTitle = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 150px;
-  color:#434347;
+  color: #F04E3E;
 `
 
 const ContainerCartProducts = styled.div`

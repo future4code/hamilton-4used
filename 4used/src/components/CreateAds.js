@@ -10,7 +10,7 @@ const ContainerCreateAds = styled.div`
 	
 	h1:nth-child(1){
 		margin-left: 10%;
-		padding-top: 30px;
+		color:#434347;
 	}
 `
 
@@ -35,6 +35,10 @@ const DataContainer = styled.div`
 	props => props.bottom
 	};
 `
+const LabelInput = styled.label ` 
+	color:#434347;
+`
+
 const InputCreateAds = styled.input` 
 	margin-top: 10px;
 	border-radius: 5px;
@@ -167,7 +171,7 @@ export default class CreateAds extends React.Component {
 			<ContainerMain>
 				<ContainerForm>
 					<DataContainer>
-						<label>O que você quer vender?  </label>
+						<LabelInput>O que você quer vender?  </LabelInput>
 						<InputCreateAds
 							onChange={this.onChangeInputName}
 							value={this.state.nameProduct}
@@ -175,7 +179,7 @@ export default class CreateAds extends React.Component {
 						></InputCreateAds>
 					</DataContainer>
 					<DataContainer>
-						<label>A foto faz TODA diferença! Adiciona ela: </label>
+						<LabelInput>A foto faz TODA diferença! Adiciona ela: </LabelInput>
 						<InputCreateAds
 							onChange={this.onChangeInputPhoto}
 							value={this.state.photosProduct}
@@ -184,7 +188,7 @@ export default class CreateAds extends React.Component {
 						</InputCreateAds>
 					</DataContainer>
 					<DataContainer>
-						<label>Descrição caprichada do produto: </label>
+						<LabelInput>Descrição caprichada do produto: </LabelInput>
 						<InputCreateAds
 							onChange={this.onChangeInputDescription}
 							value={this.state.descriptionProduct}
@@ -192,17 +196,25 @@ export default class CreateAds extends React.Component {
 						></InputCreateAds>
 					</DataContainer>
 					<DataContainer>
-						<label>Qual a categoria do seu desapego? </label>
+						<LabelInput>Qual a categoria do seu desapego? </LabelInput>
 						<SelectCreateAds
 							onChange={this.onChangeInputCategory}
 							value={this.state.categoryProduct}
 						>
-							<option value="teste">Teste</option>
-							<option value=""></option>
+							<option value="">Escolha uma categoria</option>
+							<option value="games">Games</option>
+							<option value="Jogos de tabuleiro">Jogos de tabuleiro</option>
+							<option value="Headphones">Headphones</option>
+							<option value="livros">Livros</option>
+							<option value="decoracao">Decoração</option>
+							<option value="pet">Pet</option>
+							<option value="artesanato">Artesanato</option>
+							<option value="brinquedos">Brinquedos</option>
+							<option value="treino">Treino</option>
 						</SelectCreateAds>
 					</DataContainer>
 					<DataContainer>
-						<label>Qual o preço do seu produto? </label>
+						<LabelInput>Qual o preço do seu produto? </LabelInput>
 						<InputCreateAds
 							onChange={this.onChangeInputPrice}
 							value={this.state.priceProduct}
@@ -212,7 +224,7 @@ export default class CreateAds extends React.Component {
 						></InputCreateAds>
 					</DataContainer>
 					<DataContainer>
-						<label>Escolha a opção de pagamento: </label>
+						<LabelInput>Escolha a opção de pagamento: </LabelInput>
 						<SelectCreateAds
 							onChange={this.onChangeInputPayMethod}
 							value={this.state.paymentMetProduct}
@@ -222,7 +234,7 @@ export default class CreateAds extends React.Component {
 						</SelectCreateAds>
 					</DataContainer>
 					<DataContainer bottom={'50px'}>
-						<label>Quantidade de parcelas: </label>
+						<LabelInput>Quantidade de parcelas: </LabelInput>
 						<SelectCreateAds
 							onChange={this.onChangeInputInstallments}
 							value={this.state.installmentsProduct}

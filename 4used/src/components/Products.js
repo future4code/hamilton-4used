@@ -7,7 +7,6 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 const PageContainer = styled.div`
 	margin-left: 10%;
 	margin-right:10%;
-	padding-top: 20px;
 	padding-bottom: 40px;
 `
 
@@ -17,12 +16,17 @@ const PageTitle = styled.h2`
 	font-size:2em;
 	color:#434347;
 `
+const LabelInput = styled.label ` 
+	color:#434347;
+`
+
 const InputFilter = styled.input` 
 	margin-left: 5px;
 	margin-right: 20px;
 	border: #FFFFFF;
-	border-bottom: 1px black solid;
+	border-bottom: 1px solid black;
 	width: 80px;
+
 `
 
 const SelectOrder = styled.select`
@@ -173,9 +177,9 @@ export default class Products extends React.Component {
 		return (
 			<PageContainer>
 				<PageTitle>Aqui tem mais itens similares:</PageTitle>
-				<label>Preço mínimo: </label>
+				<LabelInput>Preço mínimo: </LabelInput>
 				<InputFilter onChange={this.onChangeInputMin} />
-				<label>Preço máximo:</label>
+				<LabelInput>Preço máximo:</LabelInput>
 				<InputFilter onChange={this.onChangeInputMax} />
 				<SelectOrder onChange={this.onChangeinputSelect}>
 					<option value="nenhum">ORDENAR</option>
