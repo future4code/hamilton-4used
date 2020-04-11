@@ -59,7 +59,16 @@ export class AppContainer extends React.Component {
 		this.setState({
 			arrayCart: [...this.state.arrayCart, product],
 		});
+		alert("Produto adicionado no carrinho com sucesso!")
 	};
+
+	removeProductToCart=(value)=>{
+		const newArrayCart = this.state.arrayCart.filter(product=>{
+			return (product.name!==value);
+		})
+		this.setState({arrayCart: newArrayCart});
+	}
+
 	toggleCart = () => {
 		this.setState({
 			isCartOpen: !this.state.isCartOpen,
@@ -104,7 +113,7 @@ export class AppContainer extends React.Component {
 					arrayCart={this.state.arrayCart}
 					toggleCart={this.toggleCart}
 					isCartOpen={this.state.isCartOpen}
-
+					removeProductToCart={this.removeProductToCart}
 				/>
 
 				<Header setScreen={this.setScreen} 

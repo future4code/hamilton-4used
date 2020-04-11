@@ -47,16 +47,10 @@ const ImageHome = styled.img`
 `
 
 export default class Home extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-
 
 	changeScreen = (value) => {
 		this.props.setScreen(value);
 	}
-
-
 
 	render() {
 		return (

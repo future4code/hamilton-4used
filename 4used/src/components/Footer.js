@@ -13,16 +13,11 @@ const ImageGit = styled.img`
 	height: 50px;
 `
 
-export default class Footer extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+export default function Footer(){
 
-	render() {
-		return <FotterContainer>
-			<a href="https://github.com/future4code/hamilton-4used">
-				<ImageGit src={GitHub}></ImageGit>
-			</a>
-		</FotterContainer>
-	}
+	return (<FotterContainer>
+				<a href="https://github.com/future4code/hamilton-4used">
+					<ImageGit src={GitHub}></ImageGit>
+				</a>
+			</FotterContainer>)
 }

@@ -67,9 +67,10 @@ const Overlay = styled.div`
 export default class MarketCar extends React.Component {
 
   renderMarketCarProducts = () => {
-    const selectedProducts = this.props.arrayCart.map(product => {
-      return (<DivProductMarketCar>
-        <img src={product.photos} />
+    const selectedProducts = this.props.arrayCart.map((product,index) => {
+      return (<DivProductMarketCar key={index}>
+        <img src={product.photos} alt="Ilustração do produto"/>
+        <button onClick={()=>this.removeProductToCart(product.name)}>delete</button>
         <ContainerProduct>
           <p>{product.name}</p>
           <Price>R${product.price}</Price>
@@ -81,14 +82,20 @@ export default class MarketCar extends React.Component {
 
   totalPrice = () => {
     let total = 0;
-    const sumTotal = this.props.arrayCart.forEach(product => {
-      return total = total + product.price
+     this.props.arrayCart.forEach(product => {
+      return total = (Number(total) + product.price).toFixed(2);
     });
 
     return (<div>
-      <h4>Total</h4>
-      <p>R$ {total}</p>
-    </div>)
+              <h4><strong>Total:</strong></h4>
+              <p>R$ {total}</p>
+            </div>)
+  }  
+
+  removeProductToCart=(value)=>{
+    if(window.confirm("Tem certeza que deseja remover este produto do carrinho ?")){
+      this.props.removeProductToCart(value);
+    }
   }
 
 

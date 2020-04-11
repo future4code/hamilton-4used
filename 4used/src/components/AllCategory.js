@@ -103,9 +103,6 @@ const DivCard2 = styled.div`
 
 
 export default class AllCategory extends React.Component {
-	constructor(props) {
-		super(props)
-	}
 
 
 	changeScreen=(category)=>{
@@ -123,8 +120,8 @@ export default class AllCategory extends React.Component {
             arrayImagens.push(filterByCategory[i].photos)
 		}
 		
-        const imagesProducts = arrayImagens.map(element=>{
-             return(<div><ImgCard src={element}/></div>)
+        const imagesProducts = arrayImagens.map((element,index)=>{
+             return(<div key={index}><ImgCard src={element}/></div>)
 			})
 		
 		function cardStyle() {
@@ -155,7 +152,7 @@ export default class AllCategory extends React.Component {
 		return (
 		<ContainerAllCategory>
 
-			{/* {this.renderCategories("games", "Gamers e quarenteners", "jogos para matar o tédio", 1)} */}
+			{this.renderCategories("games", "Gamers e quarenteners", "jogos para matar o tédio", 1)}
 			{this.renderCategories("Jogos de tabuleiro", "Jogos de tabuleiro", "colocando as cartas na mesa", 2)}
 			{this.renderCategories("Headphones", "Headphones", "para todas as vídeo-chamadas", 1)}
 			{this.renderCategories("livros", "Livros para sua quarentena", "viajando dentro de casa", 2)}
