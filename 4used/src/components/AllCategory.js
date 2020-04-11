@@ -2,20 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContainerAllCategory = styled.div`
-
 `
 
-const Category = styled.div``
-
+const Category = styled.div`
+	padding-bottom: 15px;
+`
 
 const DivCard1 = styled.div`
-	height:200px;
-	width:400px;
+	margin-left: 10%;
+	height: 80%;
+	width: 80%;
 	position:relative;
 	display:grid;
 	grid-template-columns: repeat(6 , 1fr);
 	grid-template-rows: 1fr 1fr;
 	grid-gap: 10px;
+
 
 	div{
 		border: 1px solid black;
@@ -48,16 +50,19 @@ const DivCard1 = styled.div`
 `
 
 const ImgCard = styled.img`
-	height: 100%;
-	width: 100%;
+	height: 200px;
+	object-fit: cover;
+
 `
 const TitleCard = styled.div`
-
+	margin-left: 10%;
 `
 
 const DivCard2 = styled.div`
-	height:200px;
-	width:400px;
+	margin-left: 10%;
+	margin-right: 10%;
+	height: 50%;
+	width: 80%;
 	position:relative;
 	display:grid;
 	grid-template-columns: repeat(6 , 1fr);
@@ -150,7 +155,7 @@ export default class AllCategory extends React.Component {
 		return (
 		<ContainerAllCategory>
 
-			{this.renderCategories("games", "Gamers e quarenteners", "jogos para matar o tédio", 1)}
+			{/* {this.renderCategories("games", "Gamers e quarenteners", "jogos para matar o tédio", 1)} */}
 			{this.renderCategories("Jogos de tabuleiro", "Jogos de tabuleiro", "colocando as cartas na mesa", 2)}
 			{this.renderCategories("Headphones", "Headphones", "para todas as vídeo-chamadas", 1)}
 			{this.renderCategories("livros", "Livros para sua quarentena", "viajando dentro de casa", 2)}

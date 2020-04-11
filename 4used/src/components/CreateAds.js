@@ -35,16 +35,33 @@ const DataContainer = styled.div`
 	props => props.bottom
 	};
 `
+const InputCreateAds = styled.input` 
+	margin-top: 10px;
+	border-radius: 5px;
+	height: 30px;
+`
+
+const SelectCreateAds = styled.select`
+	height: 30px;
+	border-radius: 5px;
+`
+
+const ContainerImage = styled.div ` 
+	width: 50%;
+	display: flex;
+	margin-right: 10%;
+	align-items: center;
+
+`
 
 const ImageCreateAds = styled.img` 
-	width: 40%;
-	margin-right: 10%;
+	height: 70%;
 	object-fit: cover;
 `
 
 
 
-class CreateAds extends React.Component {
+export default class CreateAds extends React.Component {
 	constructor(props) {
 		super(props)
 
@@ -151,62 +168,62 @@ class CreateAds extends React.Component {
 				<ContainerForm>
 					<DataContainer>
 						<label>O que você quer vender?  </label>
-						<input
+						<InputCreateAds
 							onChange={this.onChangeInputName}
 							value={this.state.nameProduct}
 							placeholder="Título do item"
-						></input>
+						></InputCreateAds>
 					</DataContainer>
 					<DataContainer>
 						<label>A foto faz TODA diferença! Adiciona ela: </label>
-						<input
+						<InputCreateAds
 							onChange={this.onChangeInputPhoto}
 							value={this.state.photosProduct}
 							placeholder="Coloque a URL da imagem"
 						>
-						</input>
+						</InputCreateAds>
 					</DataContainer>
 					<DataContainer>
 						<label>Descrição caprichada do produto: </label>
-						<input
+						<InputCreateAds
 							onChange={this.onChangeInputDescription}
 							value={this.state.descriptionProduct}
 							placeholder="Decrição"
-						></input>
+						></InputCreateAds>
 					</DataContainer>
 					<DataContainer>
 						<label>Qual a categoria do seu desapego? </label>
-						<select
+						<SelectCreateAds
 							onChange={this.onChangeInputCategory}
 							value={this.state.categoryProduct}
 						>
 							<option value="teste">Teste</option>
 							<option value=""></option>
-						</select>
+						</SelectCreateAds>
 					</DataContainer>
 					<DataContainer>
 						<label>Qual o preço do seu produto? </label>
-						<input
+						<InputCreateAds
 							onChange={this.onChangeInputPrice}
 							value={this.state.priceProduct}
 							placeholder="R$"
 							type="number"
 							min="0"
-						></input>
+						></InputCreateAds>
 					</DataContainer>
 					<DataContainer>
 						<label>Escolha a opção de pagamento: </label>
-						<select
+						<SelectCreateAds
 							onChange={this.onChangeInputPayMethod}
 							value={this.state.paymentMetProduct}
 						>
 							<option value="debit">Boleto bancário</option>
 							<option value="card">Cartão de Crédito</option>
-						</select>
+						</SelectCreateAds>
 					</DataContainer>
 					<DataContainer bottom={'50px'}>
 						<label>Quantidade de parcelas: </label>
-						<select
+						<SelectCreateAds
 							onChange={this.onChangeInputInstallments}
 							value={this.state.installmentsProduct}
 						>
@@ -214,14 +231,14 @@ class CreateAds extends React.Component {
 							<option value="2">x 2</option>
 							<option value="5">x 5</option>
 							<option value="10">x 10</option>
-						</select>
+						</SelectCreateAds>
 					</DataContainer>
 					<Button size="medium" color="secondary" variant="contained" onClick={this.createProduct}>Criar anúncio</Button>
 				</ContainerForm>
-				{this.changePhoto()}
+				<ContainerImage>
+					{this.changePhoto()}
+				</ContainerImage>
 			</ContainerMain>
 		</ContainerCreateAds>
 	}
 }
-
-export default CreateAds

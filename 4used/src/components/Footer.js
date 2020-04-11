@@ -4,7 +4,7 @@ import GitHub from "../img/github.png"
 
 
 const FotterContainer = styled.footer` 
-	background-color: #585753;
+	background-color: #202020;
 	padding: 40px;
 	display: flex;
 	justify-content: center;
@@ -13,7 +13,7 @@ const ImageGit = styled.img`
 	height: 50px;
 `
 
-class Footer extends React.Component {
+export default class Footer extends React.Component {
 	constructor(props) {
 		super(props)
 	}
@@ -26,5 +26,3 @@ class Footer extends React.Component {
 		</FotterContainer>
 	}
 }
-
-export default Footer

@@ -9,6 +9,14 @@ import MarketCar from './MarketCar'
 import Products from './Products'
 import Search from './Search'
 import {Button} from '@material-ui/core'
+import styled from 'styled-components'
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+
+const ButtonCart = styled(Button) `
+	position: absolute;
+	top: 30px;
+	right: 10%;
+`
 
 export class AppContainer extends React.Component {
 	constructor(props) {
@@ -78,7 +86,7 @@ export class AppContainer extends React.Component {
 								 addToCart={this.addToCart}/>
 								 
 			case "search":
-				return <Search arrayProductsSearch={this.state.arrayProductsSearch}/>
+				return <Search arrayProductsSearch={this.state.arrayProductsSearch} addToCart={this.addToCart}/>
 
 			default:
 				return <div>fail</div>
@@ -92,8 +100,6 @@ export class AppContainer extends React.Component {
 	render() {
 		return (
 			<div>
-
-				<Button onClick={this.toggleCart}>ABRIR LOJA</Button>
 				<MarketCar
 					arrayCart={this.state.arrayCart}
 					toggleCart={this.toggleCart}
@@ -107,6 +113,8 @@ export class AppContainer extends React.Component {
 				/>
 
 				{this.currentScreen()}
+				<ButtonCart size="large" color="secondary" variant="fab"
+							 onClick={this.toggleCart}> <ShoppingBasketIcon /> </ButtonCart>
 
 				<Footer/>
 			</div>
