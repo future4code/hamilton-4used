@@ -49,11 +49,16 @@ const DivCard1 = styled.div`
 	}
 `
 
-const ImgCard = styled.img`
+const ImgCard1 = styled.img`
 	height: 200px;
 	object-fit: cover;
-
 `
+const ImgCard2 = styled.img`
+	height: 100px;
+`
+
+
+
 const TitleCard = styled.div`
 	margin-left: 10%;
 	color:#434347;
@@ -100,9 +105,6 @@ const DivCard2 = styled.div`
 	}
 `
 
-
-
-
 export default class AllCategory extends React.Component {
 
 
@@ -121,18 +123,46 @@ export default class AllCategory extends React.Component {
             arrayImagens.push(filterByCategory[i].photos)
 		}
 		
-        const imagesProducts = arrayImagens.map((element,index)=>{
-             return(<div key={index}><ImgCard src={element}/></div>)
-			})
+        // const imagesProducts = arrayImagens.map((element,index)=>{
+		// 	if (index===0 || index===5){
+		// 		return(<div key={index}><ImgCard1 src={element}/></div>)
+		// 	}else{
+		// 		return(<div key={index}><ImgCard2 src={element}/></div>)
+		// 	}
+		// })
+			 
+			
 		
 		function cardStyle() {
+		
+			let imagesProducts;
+
 			switch(style){
 				case 1:
+					imagesProducts = arrayImagens.map((element,index)=>{
+						if (index===0 || index===5){
+							return(<div key={index}><ImgCard1 src={element}/></div>)
+						}else{
+							return(<div key={index}><ImgCard2 src={element}/></div>)
+						}
+					})
+
 					return (<DivCard1>{imagesProducts}</DivCard1>);
+
 				case 2:
+					imagesProducts = arrayImagens.map((element,index)=>{
+						if (index===2 || index===5){
+							return(<div key={index}><ImgCard1 src={element}/></div>)
+						}else{
+							return(<div key={index}><ImgCard2 src={element}/></div>)
+						}
+					})
+
 					return (<DivCard2>{imagesProducts}</DivCard2>);
+
+
 				default:
-					return(<DivCard1>{imagesProducts}</DivCard1>);
+					return(<div>FAIL</div>);
 			}
 		}
 
