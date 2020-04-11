@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import { Select } from '@material-ui/core';
-
 
 
 const PageContainer = styled.div`
@@ -98,7 +96,7 @@ export default class Products extends React.Component {
 	}
 
 	onChangeInputMin = (event) => {
-		if (event.target.value == "") {
+		if (event.target.value === "") {
 			this.setState({ inputMin: null })
 		} else {
 			this.setState({ inputMin: event.target.value });
@@ -138,6 +136,9 @@ export default class Products extends React.Component {
 			case "decrescente":
 				const DescendingArray = arrayFilter.sort((b, a) => a.price - b.price);
 				return this.renderProducts(DescendingArray);
+
+			default:
+				return this.renderProducts(arrayFilter);
 		}
 	};
 
