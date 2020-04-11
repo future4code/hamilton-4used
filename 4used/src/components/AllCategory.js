@@ -56,6 +56,7 @@ const ImgCard = styled.img`
 `
 const TitleCard = styled.div`
 	margin-left: 10%;
+	color:#434347;
 `
 
 const DivCard2 = styled.div`
