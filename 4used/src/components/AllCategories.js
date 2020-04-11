@@ -20,6 +20,7 @@ const DivCard1 = styled.div`
 
 	div{
 		border: 1px solid black;
+		border-radius: 10px;
 	}
 
 	div:nth-child(1){
@@ -91,6 +92,7 @@ const DivCard2 = styled.div`
 
 	div{
 		border: 1px solid black;
+		border-radius: 10px;
 	}
 
 	div:nth-child(1){
