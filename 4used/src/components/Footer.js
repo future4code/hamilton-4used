@@ -15,9 +15,11 @@ const ImageGit = styled.img`
 
 export default function Footer(){
 
-	return (<FotterContainer>
-				<a href="https://github.com/future4code/hamilton-4used">
-					<ImageGit src={GitHub}></ImageGit>
-				</a>
-			</FotterContainer>)
+	return (
+		<FotterContainer>
+			<a href="https://github.com/future4code/hamilton-4used">
+				<ImageGit src={GitHub}></ImageGit>
+			</a>
+		</FotterContainer>
+	)
 }

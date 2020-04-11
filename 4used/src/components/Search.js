@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import Sad from "../img/ghost.png"
+
 import Button from '@material-ui/core/Button';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import Sad from "../img/ghost.png"
 
 const SearchContainer = styled.div`
 	margin: 5% 10%;
@@ -18,13 +19,11 @@ const ContainerGrid = styled.div`
 	background-color: #fff;
 	color: #444;
 `
-
 const Box = styled.div`
 	border:1px  solid #434347;
 	border-radius: 15px;
 	box-shadow: 2px 2px 2px #434347;
 `
-
 const CardContent = styled.div`
 	height: 80%;
 	display:flex;
@@ -32,25 +31,21 @@ const CardContent = styled.div`
 	justify-content: center;
 	align-items: center;
 `
-
 const Title = styled.h3`
 	text-align:center;
 	font-size: 1.2em;
 	color:#434347;
 `
-
 const DivDescription = styled.div`
 	display:flex;
 	flex-direction: column;
 	align-items: flex-start;
 	margin: 5px;
 `
-
 const ItemImage = styled.img`
 	object-fit: cover;
 	height: 150px;
 `
-
 const DivButton = styled.div`
 	margin: 10px;
 `
@@ -67,11 +62,11 @@ export default class Search extends React.Component {
 
 	renderProducts = () => {
 		if (this.props.arrayProductsSearch.length === 0) {
-			return <>
-				<h4>Infelizmente não encontramos</h4>
-				<ImageNotFound src={Sad}></ImageNotFound>
-			</>
-
+			return (<div>
+						<h4>Infelizmente não encontramos</h4>
+						<ImageNotFound src={Sad}></ImageNotFound>
+					</div>
+			)
 		} else {
 			const searchProducts = this.props.arrayProductsSearch.map(product => {
 				return (
