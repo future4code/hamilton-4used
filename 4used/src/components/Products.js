@@ -9,7 +9,6 @@ const PageContainer = styled.div`
 	margin-right:10%;
 	padding-bottom: 40px;
 `
-
 const PageTitle = styled.h2`
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -19,7 +18,6 @@ const PageTitle = styled.h2`
 const LabelInput = styled.label ` 
 	color:#434347;
 `
-
 const InputFilter = styled.input` 
 	margin-left: 5px;
 	margin-right: 20px;
@@ -28,13 +26,11 @@ const InputFilter = styled.input`
 	width: 80px;
 
 `
-
 const SelectOrder = styled.select`
 	height: 30px;
 	border-radius: 5px;
 	margin-right: 40px;
 `
-
 const ContainerGrid = styled.div`
 	margin-top: 40px;
 	display: grid;
@@ -43,13 +39,11 @@ const ContainerGrid = styled.div`
 	background-color: #fff;
 	color: #444;
 `
-
 const Box = styled.div`
 	border:1px  solid #434347;
 	border-radius: 15px;
 	box-shadow: 2px 2px 2px #434347;
 `
-
 const CardContent = styled.div`
 	height: 80%;
 	display:flex;
@@ -57,25 +51,21 @@ const CardContent = styled.div`
 	justify-content: center;
 	align-items: center;
 `
-
 const Title = styled.h3`
 	text-align:center;
 	font-size: 1.2em;
 	color:#434347;
 `
-
 const DivDescription = styled.div`
 	display:flex;
 	flex-direction: column;
 	align-items: flex-start;
 	margin: 5px;
 `
-
 const ItemImage = styled.img`
 	object-fit: cover;
 	height: 150px;
 `
-
 const DivButton = styled.div`
 	margin: 10px;
 `
@@ -113,7 +103,8 @@ export default class Products extends React.Component {
 	}
 
 
-	//tem que melhorar, para não ficar em cascata!
+	//Infelizmente não encontramos nenhuma forma melhor de fazer esta função ao invés de cascata.
+	//Você poderia nos dar alguma outra sugestão de como fazer ? Obrigado  ^ ^ 
 	intCascate = () => {
 		const filterCategory = this.props.arrayProducts.filter(product => {
 			return (product.category === this.props.selectCategory)
@@ -164,13 +155,14 @@ export default class Products extends React.Component {
 						<Button size="medium" color="secondary" variant="fab"
 							onClick={() => this.props.addToCart(product)}> <ShoppingBasketIcon /> </Button>
 					</DivButton>
-				</Box>)
+				</Box>
+			)
 		})
 		return allProducts;
 	}
 
 	changeScreen = () => {
-		this.props.setScreen("allcategory");
+		this.props.setScreen("allcategories");
 	}
 
 	render() {
@@ -193,7 +185,6 @@ export default class Products extends React.Component {
 					{this.intCascate()}
 				</ContainerGrid>
 			</PageContainer>
-
 		)
 	}
 }

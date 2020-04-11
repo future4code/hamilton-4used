@@ -20,7 +20,6 @@ const PageTitle = styled.h2`
 const Title = styled.h3 `
 	color:#434347;
 `
-
 const MainContainerHome = styled.div` 
 	margin-left: 10%;
 	margin-right: 10%;
@@ -46,6 +45,7 @@ const ImageHome = styled.img`
 	border: #434347 solid 1px;
 `
 
+
 export default class Home extends React.Component {
 
 	changeScreen = (value) => {
@@ -59,7 +59,7 @@ export default class Home extends React.Component {
 				<MainContainerHome>
 					<ContainerBuy>
 						<Title>QUERO COMPRAR!</Title>
-						<ImageHome src={AdImage2} onClick={() => this.changeScreen("allcategory")}></ImageHome>
+						<ImageHome src={AdImage2} onClick={() => this.changeScreen("allcategories")}></ImageHome>
 					</ContainerBuy>
 					<ContainerSell>
 						<Title>QUERO VENDER!</Title>

@@ -1,22 +1,26 @@
 import React from 'react'
 import axios from "axios";
-import AllCategory from './AllCategory'
+import styled from 'styled-components'
+
 import Header from './Header'
-import Footer from './Footer'
-import CreateAds from './CreateAds'
 import Home from './Home'
-import MarketCar from './MarketCar'
+import AllCategories from './AllCategories'
 import Products from './Products'
 import Search from './Search'
+import CreateAds from './CreateAds'
+import MarketCar from './MarketCar'
+import Footer from './Footer'
+
 import {Button} from '@material-ui/core'
-import styled from 'styled-components'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+
 
 const ButtonCart = styled(Button) `
 	position: absolute;
 	top: 30px;
 	right: 10%;
 `
+
 
 export class AppContainer extends React.Component {
 	constructor(props) {
@@ -30,7 +34,6 @@ export class AppContainer extends React.Component {
 			selectCategory: "",
 		};
 	}
-
 
 	setScreen=(value)=>{
 		this.setState({screen: value})
@@ -80,8 +83,8 @@ export class AppContainer extends React.Component {
 			case "home":
 				return <Home setScreen={this.setScreen}/>
 
-			case "allcategory":
-				return <AllCategory setScreen={this.setScreen}
+			case "allcategories":
+				return <AllCategories setScreen={this.setScreen}
 									arrayProducts={this.state.arrayProducts}
 									setSelectCategory={this.setSelectCategory}/>
 
@@ -95,7 +98,8 @@ export class AppContainer extends React.Component {
 								 addToCart={this.addToCart}/>
 								 
 			case "search":
-				return <Search arrayProductsSearch={this.state.arrayProductsSearch} addToCart={this.addToCart}/>
+				return <Search arrayProductsSearch={this.state.arrayProductsSearch} 
+							   addToCart={this.addToCart}/>
 
 			default:
 				return <div>fail</div>
@@ -109,21 +113,21 @@ export class AppContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<MarketCar
-					arrayCart={this.state.arrayCart}
-					toggleCart={this.toggleCart}
-					isCartOpen={this.state.isCartOpen}
-					removeProductToCart={this.removeProductToCart}
-				/>
+				<MarketCar arrayCart={this.state.arrayCart}
+						   toggleCart={this.toggleCart}
+						   isCartOpen={this.state.isCartOpen}
+					       removeProductToCart={this.removeProductToCart} />
 
 				<Header setScreen={this.setScreen} 
 						arrayProducts={this.state.arrayProducts}
-						setSearchArray={this.setSearchArray}
-				/>
+						setSearchArray={this.setSearchArray} />
 
 				{this.currentScreen()}
+
 				<ButtonCart size="large" color="secondary" variant="fab"
-							 onClick={this.toggleCart}> <ShoppingBasketIcon /> </ButtonCart>
+							 onClick={this.toggleCart}> 
+					<ShoppingBasketIcon />
+				</ButtonCart>
 
 				<Footer/>
 			</div>

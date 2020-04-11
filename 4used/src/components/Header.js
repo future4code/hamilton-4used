@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from "../img/logo.png"
-import Button from '@material-ui/core/Button';
 
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 const HeaderContainer = styled.header` 
@@ -10,7 +10,6 @@ const HeaderContainer = styled.header`
 	padding: 20px 0;
 	display: flex; 
 `
-
 const LogoImage = styled.img` 
 	height: 80px;
 	align-self: center;	
@@ -22,11 +21,9 @@ const ContainerInputSearch = styled.div `
 	display: flex;
 	align-items: flex-end;
 `
-
 const InputSearch = styled(TextField)`
 	margin-right: 15px;
 `
-
 
 
 export default class Header extends React.Component {
@@ -63,13 +60,13 @@ export default class Header extends React.Component {
 			<HeaderContainer>
 				<LogoImage src={logo} onClick={this.changeScreen}></LogoImage>
 				<ContainerInputSearch>
-				<InputSearch
-				onChange={this.onChangeInputSearch}
-				id="standard-helperText"
-				label="Buscar produto"
-				defaultValue=""
-				/>
-				<Button onClick={this.filterSearch} size="small" color="secondary" variant="contained">Buscar</Button>
+				<InputSearch onChange={this.onChangeInputSearch}
+							 id="standard-helperText"
+				             label="Buscar produto"
+				             defaultValue=""/>
+				<Button onClick={this.filterSearch} size="small" color="secondary"
+						variant="contained">Buscar
+				</Button>
 				</ContainerInputSearch>
 			</HeaderContainer>
 		)

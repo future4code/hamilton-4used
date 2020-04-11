@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ContainerAllCategory = styled.div`
+const ContainerAllCategories = styled.div`
 `
-
 const Category = styled.div`
 	padding-bottom: 15px;
 `
-
 const DivCard1 = styled.div`
 	margin-left: 10%;
 	height: 80%;
@@ -48,7 +46,6 @@ const DivCard1 = styled.div`
 		grid-row:1/3;
 	}
 `
-
 const ImgCard1 = styled.img`
 	height: 200px;
 	object-fit: cover;
@@ -56,14 +53,10 @@ const ImgCard1 = styled.img`
 const ImgCard2 = styled.img`
 	height: 100px;
 `
-
-
-
 const TitleCard = styled.div`
 	margin-left: 10%;
 	color:#434347;
 `
-
 const DivCard2 = styled.div`
 	margin-left: 10%;
 	margin-right: 10%;
@@ -105,8 +98,8 @@ const DivCard2 = styled.div`
 	}
 `
 
-export default class AllCategory extends React.Component {
 
+export default class AllCategories extends React.Component {
 
 	changeScreen=(category)=>{
 		this.props.setSelectCategory(category);
@@ -121,18 +114,8 @@ export default class AllCategory extends React.Component {
         let arrayImagens = [];
         for(let i=0;i<=5;i++){
             arrayImagens.push(filterByCategory[i].photos)
-		}
-		
-        // const imagesProducts = arrayImagens.map((element,index)=>{
-		// 	if (index===0 || index===5){
-		// 		return(<div key={index}><ImgCard1 src={element}/></div>)
-		// 	}else{
-		// 		return(<div key={index}><ImgCard2 src={element}/></div>)
-		// 	}
-		// })
-			 
+		}		 
 			
-		
 		function cardStyle() {
 		
 			let imagesProducts;
@@ -160,9 +143,8 @@ export default class AllCategory extends React.Component {
 
 					return (<DivCard2>{imagesProducts}</DivCard2>);
 
-
 				default:
-					return(<div>FAIL</div>);
+					return(<div>Não conseguimos acessar esta categoria, por favor informar ao suporte.</div>);
 			}
 		}
 
@@ -181,7 +163,7 @@ export default class AllCategory extends React.Component {
 
 	render() {
 		return (
-		<ContainerAllCategory>
+		<ContainerAllCategories>
 
 			{this.renderCategories("games", "Gamers e quarenteners", "jogos para matar o tédio", 1)}
 			{this.renderCategories("Jogos de tabuleiro", "Jogos de tabuleiro", "colocando as cartas na mesa", 2)}
@@ -193,7 +175,7 @@ export default class AllCategory extends React.Component {
 			{this.renderCategories("brinquedos", "Brinquedos", "para distrair seu filho na quarentena", 2)}
 			{this.renderCategories("treino", "Para treinar sem sair de casa", "a maromba não pode parar", 1)}
 			
-		</ContainerAllCategory> 
+		</ContainerAllCategories> 
 		)
 	}
 }
