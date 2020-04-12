@@ -8,6 +8,7 @@ const Category = styled.div`
 `
 const DivCard1 = styled.div`
 	margin-left: 10%;
+	margin-bottom: 15px;
 	height: 80%;
 	width: 80%;
 	position:relative;
@@ -19,39 +20,59 @@ const DivCard1 = styled.div`
 
 	div{
 		border: 1px solid black;
+		border-radius: 10px;
 	}
 
 	div:nth-child(1){
 		grid-column:1/3;
 		grid-row:1/3;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(2){
 		grid-column:3;
 		grid-row:1;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(3){
 		grid-column:3;
 		grid-row:2;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(4){
 		grid-column:4;
 		grid-row:1;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(5){
 		grid-column:4;
 		grid-row:2;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(6){
 		grid-column:5/7;
 		grid-row:1/3;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 `
 const ImgCard1 = styled.img`
-	height: 200px;
+	height: 240px;
 	object-fit: cover;
 `
 const ImgCard2 = styled.img`
-	height: 100px;
+	height: 150px;
+	object-fit: cover;
 `
 const TitleCard = styled.div`
 	margin-left: 10%;
@@ -60,6 +81,7 @@ const TitleCard = styled.div`
 const DivCard2 = styled.div`
 	margin-left: 10%;
 	margin-right: 10%;
+	margin-bottom: 15px;
 	height: 50%;
 	width: 80%;
 	position:relative;
@@ -70,31 +92,50 @@ const DivCard2 = styled.div`
 
 	div{
 		border: 1px solid black;
+		border-radius: 10px;
 	}
 
 	div:nth-child(1){
 		grid-column:1;
 		grid-row:1;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(2){
 		grid-column:1;
 		grid-row:2;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(3){
 		grid-column:2/4;
 		grid-row:1/3;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(4){
 		grid-column:4;
 		grid-row:1;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(5){
 		grid-column:4;
 		grid-row:2;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 	div:nth-child(6){
 		grid-column:5/7;
 		grid-row:1/3;
+		display:flex;
+		align-items:center;
+		justify-content: center;
 	}
 `
 

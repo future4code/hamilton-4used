@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+
+import Fab from '@material-ui/core/Fab';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const ContainerMarketCar = styled.div` 
 `
@@ -14,6 +17,7 @@ const Container = styled.div`
   background-color: white;
   transition: 0.5s;
   padding-left: 30px;
+  padding-right: 20px;
 `
 const ContainerTitle = styled.div`
   display: flex;
@@ -31,6 +35,7 @@ const ContainerCartProducts = styled.div`
 const DivProductMarketCar = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
 	img{
 		height:40px;
@@ -41,7 +46,12 @@ const ContainerProduct = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: ${
+	  props => props.bottom
+	};
+  border-bottom: ${
+    props => props.border
+  };
 `
 const Price = styled.p `
   margin-left: 20px;
@@ -66,9 +76,15 @@ export default class MarketCar extends React.Component {
     const selectedProducts = this.props.arrayCart.map((product,index) => {
       return (
         <DivProductMarketCar key={index}>
+          <ContainerProduct>
             <img src={product.photos} alt="Ilustração do produto"/>
-            <button onClick={()=>this.removeProductToCart(product.name)}>delete</button>
-            <ContainerProduct>
+            <Fab size="small" color="primary" variant="fab"
+							          onClick={()=>this.removeProductToCart(product.name)}> 
+               	<DeleteIcon fontSize="small"/>
+				    </Fab>
+            </ContainerProduct>
+            
+            <ContainerProduct bottom={'20px'} border={'dotted'}>
               <p>{product.name}</p>
               <Price>R${product.price}</Price>
             </ContainerProduct>
